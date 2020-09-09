@@ -1,0 +1,23 @@
+<table class="uiBox">
+  <tr>
+    <td class="heldHtmlArea">
+        <h3>Hold</h3>
+        <canvas #held class="heldBox" width="120" height="100"></canvas>
+    </td>
+    <td rowspan="2">
+      <canvas #play class="playBox"  width="200" height="400"></canvas>
+    </td>
+    <td class="nextHtmlArea">
+        <h3>Next</h3>
+        <canvas #next class="nextBox" width="120" height="100"></canvas>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="scoreHtmlArea">
+      <h2>
+        Score: {{clearedLines}}
+      </h2>
+    </td>
+  </tr>
+</table>
