@@ -32,6 +32,7 @@ export class PlayWindowComponent implements OnInit, AfterViewInit {
   availablePieces = ['IBlock', 'TBlock', 'ZBlock', 'OBlock', 'JBlock', 'LBlock', 'SBlock'];
   pieceBag = [];
   heldThisPiece = false;
+  paused = false;
   constructor(private core: CoreSystemService) {
     this.core.clearedLine.subscribe( num => {
       this.clearedLines += num;
@@ -56,6 +57,7 @@ export class PlayWindowComponent implements OnInit, AfterViewInit {
     this.contextNext = this.nextArea.nativeElement.getContext('2d');
     this.core.newPiece.next(true);
     this.core.clock.subscribe( paused => {
+      this.paused = paused;
       if (!paused) {
         this.movePiece(userDirection.Down);
       }

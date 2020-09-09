@@ -44,12 +44,18 @@
   text-align: center;
 }
 
-.controlBox {
+.textBox {
   background: gray;
   margin: 0 0 0 0;
   border:5px solid #d3d3d3;
   vertical-align: top;
 }
-.controlBox > tr > td {
+.textBox > tr > td {
   padding: 0 5px;
+}
+
+.pauseBox {
+  top: 200px;
+  left: 210px;
+  position: fixed;
 }

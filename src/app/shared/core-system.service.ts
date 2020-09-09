@@ -15,6 +15,13 @@ export class CoreSystemService {
     document.addEventListener('keydown', (data: KeyboardEvent) => {
       if (data.code === 'Space') {
         this.pause = !this.pause;
+        if (this.pause) {
+          this.clock.next(this.pause);
+        }
+      }
+      if (data.code === 'KeyR') {
+        this.userInput.next(new userInput(userInputsModel.reset));
+        this.pause = false;
       }
       if (this.pause) {
         return;
@@ -39,9 +46,6 @@ export class CoreSystemService {
       }
       if (data.code === 'KeyC') {
         this.userInput.next(new userInput(userInputsModel.hold));
-      }
-      if (data.code === 'KeyR') {
-        this.userInput.next(new userInput(userInputsModel.reset));
       }
       });
     timer(20, 1000).subscribe(() => {
