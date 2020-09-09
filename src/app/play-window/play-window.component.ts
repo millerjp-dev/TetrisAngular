@@ -86,11 +86,12 @@ export class PlayWindowComponent implements OnInit, AfterViewInit {
     this.contextNext.clearRect(0,0,this.nextArea.nativeElement.width, this.nextArea.nativeElement.height);
     if (!this.activePiece.checkSpawn()) {
       this.reset();
-    }
+    } else {
     this.heldThisPiece = false;
     this.activePiece.draw();
     this.nextPiece.draw();
     this.garbageBlocks.draw();
+    }
 
   }
 
@@ -420,10 +421,10 @@ class IBlock extends BlockShape {
   blockType = 'IBlock';
   constructor(startX, startY, canvas, garbageBlocks) {
     super(startX, startY, garbageBlocks);
-    this.blocks.push(new Block(canvas, startX - 20, startY, 20, 20, 'Blue'));
-    this.blocks.push(new Block(canvas, startX, startY, 20, 20, 'Blue'));
-    this.blocks.push(new Block(canvas, startX + 20, startY, 20, 20, 'Blue'));
-    this.blocks.push(new Block(canvas, startX + 40, startY, 20, 20, 'Blue'));
+    this.blocks.push(new Block(canvas, startX - 20, startY, 20, 20, 'Cyan'));
+    this.blocks.push(new Block(canvas, startX, startY, 20, 20, 'Cyan'));
+    this.blocks.push(new Block(canvas, startX + 20, startY, 20, 20, 'Cyan'));
+    this.blocks.push(new Block(canvas, startX + 40, startY, 20, 20, 'Cyan'));
   }
 
   turnLeft() {
