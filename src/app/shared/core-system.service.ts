@@ -6,22 +6,25 @@ import {userInput, userInputsModel} from "./models/user-inputs.model";
   providedIn: 'root'
 })
 export class CoreSystemService {
-  clock = new Subject<boolean>();
+  clockTick = new Subject<boolean>();
   userInput = new Subject<userInput>();
   clearedLine = new Subject<number>();
   newPiece = new Subject<boolean>();
-  pause = false;
+  releaseAllSubs = new Subject<boolean>();
+  private pause = false;
+  clicks;
+  clock;
   constructor() {
+    this.resetClock();
     document.addEventListener('keydown', (data: KeyboardEvent) => {
       if (data.code === 'Space') {
         this.pause = !this.pause;
         if (this.pause) {
-          this.clock.next(this.pause);
+          this.clockTick.next(this.pause);
         }
       }
       if (data.code === 'KeyR') {
         this.userInput.next(new userInput(userInputsModel.reset));
-        this.pause = false;
       }
       if (this.pause) {
         return;
@@ -48,9 +51,31 @@ export class CoreSystemService {
         this.userInput.next(new userInput(userInputsModel.hold));
       }
       });
-    timer(20, 1000).subscribe(() => {
-      this.clock.next(this.pause);
+
+  }
+
+  resetClock() {
+    this.setClock(10);
+  }
+
+  multiplyClock(scale) {
+    if (scale != 0) {
+      this.setClock(this.clicks / scale);
+    }
+  }
+
+  setClock(tickMs) {
+    this.clicks = tickMs;
+    if (this.clock) {
+      this.clock.unsubscribe();
+    }
+    this.clock = timer(this.clicks, this.clicks).subscribe(() => {
+      this.clockTick.next(this.pause);
     });
+  }
+
+  setPause(enable) {
+    this.pause = enable
   }
 
 }
