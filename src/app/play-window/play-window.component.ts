@@ -44,7 +44,7 @@ export class PlayWindowComponent implements OnInit, AfterViewInit {
       this.clearedLines += num;
       if (this.clearedLines % 3 === 0) {
         this.level++;
-        this.clickRate = this.level < 10 ? 100 - (this.level * 10) : 1;
+        this.clickRate = this.level < 100 ? 100 - (this.level) : 1;
       }
     });
     this.core.newPiece.subscribe( async () => {

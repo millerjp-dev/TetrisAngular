@@ -55,7 +55,7 @@ export class CoreSystemService {
   }
 
   resetClock() {
-    this.setClock(10);
+    this.setClock(1);
   }
 
   multiplyClock(scale) {

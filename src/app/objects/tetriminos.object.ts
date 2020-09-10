@@ -3,7 +3,7 @@ import {GarbageBlocks} from "./garbageBlocks.object";
 import {userDirection} from "../shared/models/direction.model";
 import {CoreSystemService} from "../shared/core-system.service";
 export class Tetrimino {
-  hangTimeTicks = 200;
+  hangTimeTicks = 500;
   clockSub;
   core: CoreSystemService;
   hanging = false;

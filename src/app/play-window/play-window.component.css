@@ -45,9 +45,9 @@
 }
 
 .textBox {
-  background: gray;
+  background: lightgrey;
   margin: 0 0 0 0;
-  border:5px solid #d3d3d3;
+  border:5px solid gray;
   vertical-align: top;
 }
 .textBox > tr > td {
